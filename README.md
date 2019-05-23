@@ -18,8 +18,11 @@ TBA
 ### License
 GNU GPL v3.0
 
+### Online Demo
+[https://www.ucl.ac.uk/~smgxprj/vr/](https://www.ucl.ac.uk/~smgxprj/vr/)
+
 ### More Info
-TBA
+[Jones, P. R. and Ometto, G. (2018). Degraded Reality: Using VR/AR to simulate visual impairments, Proceedings of 2018 IEEE Workshop on Augmented and Virtual Realities for Good (VAR4Good), Reutlingen, Germany., pp. 1-4. doi:[10.1109/VAR4GOOD.2018.8576885]](https://www.ucl.ac.uk/~smgxprj/pdfs/PJ_vr_ieee_v6_nonblind.pdf)
 
 ### Enjoy!
 @petejonze  
