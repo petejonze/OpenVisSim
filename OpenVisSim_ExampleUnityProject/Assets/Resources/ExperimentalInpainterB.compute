@@ -1,0 +1,164 @@
+﻿// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel CSMain
+
+Texture2D InputTexture;
+
+// Create a RenderTexture with enableRandomWrite flag and set it
+// with cs.SetTexture
+RWTexture2D<float4> Result;
+float Threshold;
+
+[numthreads(8,8,1)]
+void CSMain (uint3 tid : SV_DispatchThreadID)
+{
+	float3 allOnes = float3(1.0, 1.0, 1.0);	
+	if (dot(InputTexture.Load(int3(tid.x, tid.y, 0)).rgb, allOnes) > 0.0)
+	{
+		//Result[tid.xy] = InputTexture.Load(int3(tid.x, tid.y, 0));
+		Result[tid.xy] = float4(0.0, 0.0, 0.0, 1.0);
+		return;
+	}
+
+
+	int w, h, d;
+	InputTexture.GetDimensions(0, w, h, d);
+
+	/*
+	int kernelSize = 10;
+
+	
+	float4 sum = 0.0f;
+	int cnt = 0;
+	for (int i = max(0, (int)tid.x - kernelSize); i < min(w, (int)tid.x + kernelSize); i++)	
+	{
+		sum += InputTexture.Load(int3(i, tid.y, 0));
+		cnt++;
+	}
+	*/
+
+	// count number of steps in each direction until reach a non-masked pixel
+
+
+	/*
+	if (tid.x <= 0 || tid.x >= w || tid.y == 0 || tid.y == h) {
+		Result[tid.xy] = float4(1, 1, 1, 1);
+		return;
+	}
+	*/
+
+
+
+
+	int x0 = 1;
+	while (dot(InputTexture.Load(int3((int)tid.x - x0, tid.y, 0)), allOnes) == 0.0)
+	{
+		x0++;
+		if (((int)tid.x - x0) < 0)
+		{
+			Result[tid.xy] = float4(0.0, 1.0, 0.0, 1.0);
+			return;
+		}
+	}
+
+	int x1 = 1;
+	while (dot(InputTexture.Load(int3((int)tid.x + x1, tid.y, 0)), allOnes) == 0.0)
+	{
+		x1++;
+		if (((int)tid.x + x1) >= w)
+		{
+			Result[tid.xy] = float4(0.0, 1.0, 0.0, 1.0);
+			return;
+		}
+	}
+
+	int y0 = 1;
+	while (dot(InputTexture.Load(int3(tid.x, (int)tid.y - y0, 0)), allOnes) == 0.0)
+	{
+		y0++;
+		if (((int)tid.y - y0) < 0)
+		{
+			Result[tid.xy] = float4(0.0, 1.0, 0.0, 1.0);
+			return;
+		}
+	}
+
+	int y1 = 1;
+	while (dot(InputTexture.Load(int3(tid.x, (int)tid.y + y1, 0)), allOnes) == 0.0)
+	{
+		y1++;
+		if (((int)tid.y + y1) >= h)
+		{
+			Result[tid.xy] = float4(0.0, 1.0, 0.0, 1.0);
+			return;
+		}
+	}
+	
+	//Result[tid.xy] = float4(1.0, 1.0, 1.0, 1.0);
+	//return;
+	
+	/*
+	int x1 = 1;
+	while (isMask[x + x1, y])
+	{
+		x1++;
+	}
+	int y0 = 1;
+	while (isMask[x, y - y0])
+	{
+		y0++;
+	}
+	int y1 = 1;
+	while (isMask[x, y + y1])
+	{
+		y1++;
+	}
+
+	// convert to 0 - 1
+	float left = (float)x0 / inpainterTexture.width;
+	float right = (float)x1 / inpainterTexture.width;
+	float up = (float)y0 / inpainterTexture.height;
+	float down = (float)y1 / inpainterTexture.height;
+
+	// store as 32 bit color value
+	cardinalOffsetsImgMatrix[x + y * inpainterTexture.width] = new Color(left, right, up, down);
+	*/
+
+	//
+	Result[tid.xy] = float4(x0 / (float)w, x1 / (float)w, y0 / (float)h, y1 / (float)h);
+
+
+	/*
+	X AXIS BLUR EXAMPLE
+	int w, h, d;
+	InputTexture.GetDimensions(0, w, h, d);
+
+	int kernelSize = 10;
+
+	float4 sum = 0.0f;
+	int cnt = 0;
+	for (int i = max(0, (int)tid.x - kernelSize); i < min(w, (int)tid.x + kernelSize); i++)
+	{
+	sum += InputTexture.Load(int3(i, tid.y, 0));
+	cnt++;
+	}
+
+	// average
+	Result[tid.xy] = sum / (float)cnt;
+	*/
+
+
+	/*
+	http://www.codinglabs.net/tutorial_compute_shaders_filters.aspx
+	float3 readPixel(int x, int y)
+	{
+		float3 output;
+		uint index = (x + y * 1024);
+
+		output.x = (float)(((Buffer0[index].colour) & 0x000000ff)) / 255.0f;
+		output.y = (float)(((Buffer0[index].colour) & 0x0000ff00) >> 8) / 255.0f;
+		output.z = (float)(((Buffer0[index].colour) & 0x00ff0000) >> 16) / 255.0f;
+
+		return output;
+	}
+	*/
+}

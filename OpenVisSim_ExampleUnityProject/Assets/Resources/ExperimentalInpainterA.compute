@@ -1,0 +1,36 @@
+﻿// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel CSMain
+
+// Create a RenderTexture with enableRandomWrite flag and set it
+// with cs.SetTexture
+RWTexture2D<float4> Result;
+float Threshold;
+
+[numthreads(8,8,1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+
+	float grayscale = dot(Result[id.xy].rgb, float3(0.3, 0.59, 0.11));
+	if (grayscale < Threshold)
+	{
+		Result[id.xy] = float4(0, 0, 0, 1);
+	}
+	else {
+		Result[id.xy] = float4(1, 1, 1, 1);
+	}
+	
+	/*
+	http://www.codinglabs.net/tutorial_compute_shaders_filters.aspx
+	float3 readPixel(int x, int y)
+	{
+		float3 output;
+		uint index = (x + y * 1024);
+
+		output.x = (float)(((Buffer0[index].colour) & 0x000000ff)) / 255.0f;
+		output.y = (float)(((Buffer0[index].colour) & 0x0000ff00) >> 8) / 255.0f;
+		output.z = (float)(((Buffer0[index].colour) & 0x00ff0000) >> 16) / 255.0f;
+
+		return output;
+	}
+	*/
+}
