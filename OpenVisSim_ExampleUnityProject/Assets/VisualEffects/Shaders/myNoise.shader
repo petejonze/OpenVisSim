@@ -19,7 +19,12 @@ Shader "Hidden/VisSim/myNoise"
 		#include "UnityCG.cginc"
 
 		sampler2D _MainTex;
+		half4 _MainTex_ST;
 		sampler2D _NoiseTex;
+		half4 _NoiseTex_ST;
+		sampler2D _Overlay;
+		half4 _Overlay_ST;
+
 		float _Intensity;
 
 		sampler2D _NoiseTex1;

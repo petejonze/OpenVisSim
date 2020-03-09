@@ -1,4 +1,4 @@
-Shader "Hidden/BasicShader" {
+Shader "Hidden/VisSim/BasicShader" {
 		Properties{
 			_MainTex("Base (RGB)", 2D) = "white" {}
 		}

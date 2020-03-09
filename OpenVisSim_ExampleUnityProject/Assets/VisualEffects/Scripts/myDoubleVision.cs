@@ -95,7 +95,8 @@ namespace VisSim
 
         protected override string GetShaderName()
         {
-            return "Hidden/VisSim/myDoubleVision";
+            //return "Hidden/VisSim/myDoubleVision";
+			return "Hidden/VisSim/BasicShader";
         }
     }
 }

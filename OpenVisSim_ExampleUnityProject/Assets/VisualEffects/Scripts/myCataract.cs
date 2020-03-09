@@ -30,7 +30,7 @@ namespace VisSim
         {
             base.OnEnable();
 
-            secondaryShader = Shader.Find("Hidden/Colorful/Frost");
+            secondaryShader = Shader.Find("Hidden/VisSim/cfxFrost");
             secondaryMaterial = new Material(secondaryShader);
         }
 
