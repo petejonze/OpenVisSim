@@ -3,6 +3,7 @@ using System.Linq;
 using VisSim;
 using System.Collections.Generic;
 using System;
+using ConvexHull;
 
 // TODO: insert proper x/y limits (need to find viewing angle data for screen??)
 // TODO: compute DIFFERENCE from normative values (pointwise? or after interpolation? latter would allow for arbitrary grids)
@@ -20,12 +21,17 @@ public class GridInterpolator : ScriptableObject
     private static int width_px = 128; // The width_px of the image matrix in n-pixels
     private static int height_px = 128; // The height_px of the image matrix in n-pixels
 
+	// NB: twice the viewable range, since the field loss overlay needs to be 2X bigger than the viewable area
     // NB: rough estimates!
     // https://www.reddit.com/r/oculus/comments/4at20n/field_of_view_for_vr_headsets_explained/
-    private double fov_x_min = -45; // -21; // field of view left of the midline (on the retina), in degrees
-    private double fov_x_max = 45; //21;
-    private double fov_y_min = -45; //-15;
-    private double fov_y_max = 45; //15;
+    private double fov_x_min = -55; // -21; // field of view left of the midline (on the retina), in degrees
+	private double fov_x_max = 55; //21;
+	private double fov_y_min = -55; //-15;
+	private double fov_y_max = 55; //15;
+
+	// MIN/MAX
+	public static double ffMin = -30;
+	public static double ffMax = 0;
 
     alglib.rbfmodel model;
 	public double[,] xy;
@@ -111,7 +117,7 @@ public class GridInterpolator : ScriptableObject
 	}
     */
 
-    public Texture2D interpolateGridAndMakeTexture(double[,] xy)
+	public Texture2D interpolateGridAndMakeTexture(double[,] xy, bool extrapolate)
     {
         // example data
         //xy = new double[,] { { -21, 9, 20.3125 }, { -21, 3, 21.1094 }, { -21, -3, 20.8125 }, { -21, -9, 20.3281 }, { -15, 15, 19.3281 }, { -15, 9, 20.0625 }, { -15, 3, 18.8281 }, { -15, -9, 20.1719 }, { -15, -15, 19.2813 }, { -9, 15, 19.8438 }, { -9, 9, 19.2031 }, { -9, 3, 21.5938 }, { -9, -3, 21.4219 }, { -9, -9, 19.6875 }, { -9, -15, 18.9688 }, { -3, 15, 19.6250 }, { -3, 9, 20.6094 }, { -3, 3, 21.7031 }, { -3, -3, 21.8125 }, { -3, -9, 20.4688 }, { -3, -15, 19.2344 }, { 3, 15, 20.3125 }, { 3, 9, 21.4844 }, { 3, 3, 21.8594 }, { 3, -3, 21.5625 }, { 3, -9, 20.6250 }, { 3, -15, 19.1875 }, { 9, 15, 20.4844 }, { 9, 9, 20.8281 }, { 9, 3, 21.3906 }, { 9, -3, 21.3125 }, { 9, -9, 20.6875 }, { 9, -15, 18.9063 }, { 15, 15, 20.1094 }, { 15, 9, 20.6875 }, { 15, 3, 20.9063 }, { 15, -3, 20.3906 }, { 15, -9, 20.4375 }, { 15, -15, 18.6094 }, { 21, 9, 20.2656 }, { 21, 3, 20.8750 }, { 21, -3, 20.7656 }, { 21, -9, 19.6094 }, { 27, 3, 20.0469 }, { 27, -3, 19.8750 } };
@@ -131,47 +137,71 @@ public class GridInterpolator : ScriptableObject
         // Debugging
         //Debug.Log ("Grid array: " + xy.GetLength(0));
         
-        // find most extreme points (assuming a regular grid -- otherwise would have to use some kind of convex hull)
-        double minX = xy[0, 0];
-        double minY = xy[0, 1];
-        double maxX = xy[0, 0];
-        double maxY = xy[0, 1];
-        for (int i = 0; i < xy.GetLength(0); i++)
-        {
-            minX = Math.Min(minX, xy[i, 0]);
-            minY = Math.Min(minY, xy[i, 1]);
-            maxX = Math.Max(maxX, xy[i, 0]);
-            maxY = Math.Max(maxY, xy[i, 1]);
-        }
-        // duplicate outwards
-        List<double[]> tmp1 = new List<double[]>();
-        for (int i = 0; i < xy.GetLength(0); i++)
-        {
-            if (xy[i, 0] == minX || xy[i, 0] == maxX || xy[i, 1] == minY || xy[i, 1] == maxY)
-            {
-                tmp1.Add(new double[] { xy[i, 0] * 1.5, xy[i, 1] * 1.5, xy[i, 2] * 1.1 });
-                tmp1.Add(new double[] { xy[i, 0] * 2.5, xy[i, 1] * 2.5, xy[i, 2] * 1.2 });
-            }
-        }
-        // concatenate new points with existing (xy), to make a new xy1
-        double[,] xy1 = new double[xy.GetLength(0) + tmp1.Count, 3];
-        for (int i = 0; i < xy.GetLength(0); i++)
-        {
-            xy1[i, 0] = xy[i, 0];
-            xy1[i, 1] = xy[i, 1];
-            xy1[i, 2] = xy[i, 2];
-        }
-        int ii = xy.GetLength(0);
-        foreach (double[] d in tmp1)
-        {
-            xy1[ii, 0] = d[0];
-            xy1[ii, 1] = d[1];
-            xy1[ii, 2] = d[2];
-            ii++;
-        }
+		// PJ: Trying to improve the stability at the edges by expanding outwards -- doesn't always work well however
+		if (extrapolate) {
 
-        //alglib.rbfsetpoints(model, xy);
-        alglib.rbfsetpoints(model, xy1);
+			//Debug.Log ("STARTING HULL");
+			List<Point> listPoints = new List<Point>();
+			for (int i = 0; i < xy.GetLength (0); i++) {
+				listPoints.Add (new Point ((int)xy [i, 0], (int)xy [i, 1], (float)xy[i,2])); // HACK : convert double to int!
+			}
+			JarvisMatch jm = new JarvisMatch();
+			List<Point> hull = jm.convexHull(listPoints);
+
+			List<double[]> tmp1 = new List<double[]> ();
+			foreach (Point p in hull) {
+				//Debug.Log ("> " +  p.getX() + ", " + p.getY());
+				tmp1.Add (new double[] { p.getX() * 1.25, p.getY() * 1.25, p.v * 1.1 }); // would be better to use the difference between the last two points to scale the gradient by
+				//tmp1.Add (new double[] { p.getX(), p.getY() * 1.25, p.v * 1.1 });
+				//tmp1.Add (new double[] { p.getX() * 1.25, p.getY(), p.v * 1.1 });
+				tmp1.Add (new double[] { p.getX() * 1.5, p.getY() * 1.5, p.v * 1.2 });
+				//tmp1.Add (new double[] { p.getX(), p.getY() * 1.5, p.v * 1.2 });
+				//tmp1.Add (new double[] { p.getX() * 1.5, p.getY(), p.v * 1.2 });
+			}
+			//Debug.Log ("ENDING HULL");
+
+			/*
+			// find most extreme points (assuming a regular grid -- otherwise would have to use some kind of convex hull)
+			double minX = xy [0, 0];
+			double minY = xy [0, 1];
+			double maxX = xy [0, 0];
+			double maxY = xy [0, 1];
+			for (int i = 0; i < xy.GetLength (0); i++) {
+				minX = Math.Min (minX, xy [i, 0]);
+				minY = Math.Min (minY, xy [i, 1]);
+				maxX = Math.Max (maxX, xy [i, 0]);
+				maxY = Math.Max (maxY, xy [i, 1]);
+			}
+			// duplicate outwards
+			List<double[]> tmp1 = new List<double[]> ();
+			for (int i = 0; i < xy.GetLength (0); i++) {
+				if (xy [i, 0] == minX || xy [i, 0] == maxX || xy [i, 1] == minY || xy [i, 1] == maxY) {
+					tmp1.Add (new double[] { xy [i, 0] * 1.25, xy [i, 1] * 1.25, xy [i, 2] * 1.1 }); // would be better to use the difference between the last two points to scale the gradient by
+					tmp1.Add (new double[] { xy [i, 0] * 1.5, xy [i, 1] * 1.5, xy [i, 2] * 1.2 });
+				}
+			}
+			*/
+
+
+			// concatenate new points with existing (xy), to make a new xy1
+			double[,] xy1 = new double[xy.GetLength (0) + tmp1.Count, 3];
+			for (int i = 0; i < xy.GetLength (0); i++) {
+				xy1 [i, 0] = xy [i, 0];
+				xy1 [i, 1] = xy [i, 1];
+				xy1 [i, 2] = xy [i, 2];
+			}
+			int ii = xy.GetLength (0);
+			foreach (double[] d in tmp1) {
+				xy1 [ii, 0] = d [0];
+				xy1 [ii, 1] = d [1];
+				xy1 [ii, 2] = d [2];
+				ii++;
+			}
+
+			alglib.rbfsetpoints (model, xy1);
+		} else {
+			alglib.rbfsetpoints (model, xy);
+		}
 
         //
         // Step 3: build model
@@ -194,7 +224,12 @@ public class GridInterpolator : ScriptableObject
 
         // set model type
         //alglib.rbfsetalgoqnn(model);
-        alglib.rbfsetalgomultilayer(model, 10.0, 2, 1.0e-3); // Manual example, use 5.0+ as 2nd input param for more reasonable smoothness
+
+		// used in pilot:
+        alglib.rbfsetalgomultilayer(model, 5.0, 1, 1.0e-3); // Manual example, use 5.0+ as 2nd input param for more reasonable smoothness
+
+		// new mess:
+		//alglib.rbfsetalgomultilayer(model, 2.0, 2, 1.0e-3); // Manual example, use 5.0+ as 2nd input param for more reasonable smoothness
 
         // build model
         alglib.rbfbuildmodel(model, out rep);
@@ -244,8 +279,8 @@ public class GridInterpolator : ScriptableObject
 
         // make an image matrix, scaled so values vary from 0 and 1
         // convert 2D matrix of double-precision sensitivity values to 1D array of scaled colors
-        double ffMin = -27; // ff.Cast<double>().Min();
-        double ffMax = 0; // ff.Cast<double>().Max();
+        //double ffMin = -30; // ff.Cast<double>().Min();
+        //double ffMax = 0; // ff.Cast<double>().Max();
         double ffDiff = ffMax - ffMin;
 
         Color[] imgMatrix = new Color[width_px * height_px];
@@ -256,7 +291,7 @@ public class GridInterpolator : ScriptableObject
                 float k = (float)((ff[x, y] - ffMin) / ffDiff);
                 k = Mathf.Clamp(k, 0, 1);
                 //k = 1; // [no blur -- for debugging]
-                imgMatrix[x + y * height_px] = Color.white * (k);
+				imgMatrix[x + y * height_px] = Color.white * (k);
             }
         }
 

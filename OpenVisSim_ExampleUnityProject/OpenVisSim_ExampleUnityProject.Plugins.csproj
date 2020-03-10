@@ -233,10 +233,13 @@
       <HintPath>Library\UnityAssemblies\UnityEngine.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="FoveClient_CSharp">
-      <HintPath>Assets\FoveUnityPlugin\FoveClient_CSharp.dll</HintPath>
+      <HintPath>Assets\Demo1_Fove\FoveUnityPlugin\FoveClient_CSharp.dll</HintPath>
     </Reference>
     <Reference Include="FoveUnityPlugin">
-      <HintPath>Assets\FoveUnityPlugin\FoveUnityPlugin.dll</HintPath>
+      <HintPath>Assets\Demo1_Fove\FoveUnityPlugin\FoveUnityPlugin.dll</HintPath>
+    </Reference>
+    <Reference Include="Tobii.Research.Mono">
+      <HintPath>Assets\Demo2_TobiiViveZEDm\TobiiPro\TobiiPro\Plugins\Tobii.Research.Mono.dll</HintPath>
     </Reference>
     <Reference Include="alglibnet2">
       <HintPath>Assets\VisualEffects\Scripts\alglibnet2.dll</HintPath>
@@ -292,11 +295,60 @@
     <Compile Include="Assets\Standard Assets\Effects\ImageEffects\Scripts\Vortex.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Demo1_Fove\FoveUnityPlugin\Resources\EyeShader.shader" />
+    <None Include="Assets\Demo1_Fove\FoveUnityPlugin\Resources\EyeShaderInverted.shader" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\SteamVR\Resources\SteamVR_AlphaOut.shader" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\SteamVR\Resources\SteamVR_ClearAll.shader" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\SteamVR\Resources\SteamVR_ColorOut.shader" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\SteamVR\Resources\SteamVR_Fade.shader" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\SteamVR\Resources\SteamVR_SphericalProjection.shader" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\SteamVR\readme.txt" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\TobiiPro\TobiiPro\Examples\vrdemo\readme.txt" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\TobiiPro\TobiiPro\vr\readme.txt" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\ZED\Examples\GreenScreen\Shaders\ComputeGreenScreen.shader" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\ZED\Examples\GreenScreen\Shaders\GreenScreen.shader" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\ZED\Examples\GreenScreen\Shaders\Mask_Quad.shader" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\ZED\Examples\GreenScreen\Shaders\Outlined.shader" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\ZED\Examples\GreenScreen\Shaders\Preprocess.shader" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\ZED\Examples\GreenScreen\Shaders\YUV.shader" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\ZED\Examples\Planetarium\Resources\Earth\Shaders\Earth.shader" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\ZED\Examples\Planetarium\Resources\Earth\Shaders\FresnelShader.shader" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\ZED\Examples\Planetarium\Resources\Orbits\Materials\RingShader.shader" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\ZED\Examples\Planetarium\Resources\Saturn\Shader\Unliteferred.shader" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\ZED\Examples\Planetarium\Resources\Sun\Shader\Sun.shader" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\ZED\Examples\Planetarium\Resources\Sun\Shader\SunCorona.shader" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\ZED\Examples\SpatialMapping\Shaders\Unlit_Transparent.shader" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\ZED\Examples\SpatialMapping\ZomShooter\LICENSE.txt" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\ZED\SDK\Helpers\Resources\PrefabsUI\Shader\OverlayCustom.shader" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\ZED\SDK\Helpers\Shaders\GUI\ZED_Default_OverlayNoZTest.shader" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\ZED\SDK\Helpers\Shaders\GUI\ZED_Fade.shader" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\ZED\SDK\Helpers\Shaders\Lighting\ZED_Deferred.shader" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\ZED\SDK\Helpers\Shaders\Lighting\ZED_Deferred_Lighting.shader" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\ZED\SDK\Helpers\Shaders\Lighting\ZED_Forward.shader" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\ZED\SDK\Helpers\Shaders\Lighting\ZED_Forward_Lighting.shader" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\ZED\SDK\Helpers\Shaders\Lighting\ZED_Hide.shader" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\ZED\SDK\Helpers\Shaders\Lighting\ZED_Lighting.cginc" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\ZED\SDK\Helpers\Shaders\PlaneDetection\GeometryWirePlane.shader" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\ZED\SDK\Helpers\Shaders\PostProcessing\ZED_Blit.shader" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\ZED\SDK\Helpers\Shaders\PostProcessing\ZED_Blur.shader" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\ZED\SDK\Helpers\Shaders\PostProcessing\ZED_ComposeMask.shader" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\ZED\SDK\Helpers\Shaders\PostProcessing\ZED_Post-Processing.shader" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\ZED\SDK\Helpers\Shaders\PostProcessing\ZED_StencilToMask.shader" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\ZED\SDK\Helpers\Shaders\PostProcessing\ZED_Surface_PostProcessing.shader" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\ZED\SDK\Helpers\Shaders\PostProcessing\ZED_Unlit_PostProcessing.shader" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\ZED\SDK\Helpers\Shaders\SpatialMapping\GeometryWireframe.shader" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\ZED\SDK\Helpers\Shaders\SpatialMapping\Postprocess_blend.shader" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\ZED\SDK\Helpers\Shaders\SpatialMapping\Textures.shader" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\ZED\SDK\Helpers\Shaders\SpatialMapping\WireframeVideoOverlay.shader" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\ZED\SDK\Helpers\Shaders\Unlit\ZED_Unlit.shader" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\ZED\SDK\Helpers\Shaders\ZED_PointCloud.shader" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\ZED\SDK\Helpers\Shaders\ZED_Utils.cginc" />
+    <None Include="Assets\Demo2_TobiiViveZEDm\ZED\SDK\Shaders\ZED_Unlit_BGRA.shader" />
     <None Include="Assets\Editor\ReorderMyComponents_ReadMe.txt" />
-    <None Include="Assets\FoveUnityPlugin\Resources\EyeShader.shader" />
-    <None Include="Assets\FoveUnityPlugin\Resources\EyeShaderInverted.shader" />
     <None Include="Assets\Resources\ExperimentalInpainterA.compute" />
     <None Include="Assets\Resources\ExperimentalInpainterB.compute" />
+    <None Include="Assets\Scripts\MyFirstCompute.compute" />
+    <None Include="Assets\Scripts\MySecondCompute.compute" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\BlendModesOverlay.shader" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\BlurEffectConeTaps.shader" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\CameraMotionBlur.shader" />
@@ -370,8 +422,8 @@
     <None Include="Assets\VisualEffects\FastNoise Unity\Voxel Engine\Visual\Vertex Colored Diffuse.shader" />
     <None Include="Assets\VisualEffects\FastNoise Unity\Voxel Engine\Visual\Vertex Colored.shader" />
     <None Include="Assets\VisualEffects\Shaders\BasicShader.shader" />
-    <None Include="Assets\VisualEffects\Shaders\Colorful.cginc" />
     <None Include="Assets\VisualEffects\Shaders\Glitch.cginc" />
+    <None Include="Assets\VisualEffects\Shaders\OVShelperFuncs.cginc" />
     <None Include="Assets\VisualEffects\Shaders\cfxFrost.shader" />
     <None Include="Assets\VisualEffects\Shaders\myBloom.shader" />
     <None Include="Assets\VisualEffects\Shaders\myBlur.shader" />

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class ConvexHull
+public class ConvexHull1
 {
     //Generate a convex hull with Graham's Scan algorithm
     public List<Vector3> GenerateConvexHull(List<Vector3> unSortedList)

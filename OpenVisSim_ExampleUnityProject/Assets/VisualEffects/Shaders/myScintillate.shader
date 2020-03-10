@@ -12,7 +12,7 @@ Shader "Hidden/VisSim/myScintillate"
 	CGINCLUDE
 
 		#include "UnityCG.cginc"
-		#include "../Colorful FX/Shaders/Colorful.cginc"
+		#include "./OVShelperFuncs.cginc"
 
 		sampler2D _MainTex;
 		half3 _Params;

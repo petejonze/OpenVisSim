@@ -18,7 +18,7 @@ Shader "Hidden/VisSim/myFloaters"
 	CGINCLUDE
 
 		#include "UnityCG.cginc"
-		#include "../Colorful FX/Shaders/Colorful.cginc"
+		#include "./OVShelperFuncs.cginc"
 
 		struct v2f {
 			float4 pos : SV_POSITION;

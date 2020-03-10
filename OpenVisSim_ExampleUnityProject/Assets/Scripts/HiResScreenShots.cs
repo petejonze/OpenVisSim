@@ -5,7 +5,6 @@ public class HiResScreenShots : MonoBehaviour
 {
     public int resWidth = 1024;
     public int resHeight = 1024;
-    public Camera camera;
 
     private bool takeHiResShot = false;
 
@@ -28,7 +27,7 @@ public class HiResScreenShots : MonoBehaviour
         if (takeHiResShot)
         {
             RenderTexture rt = new RenderTexture(resWidth, resHeight, 24);
-            //Camera camera = Camera.main;
+            Camera camera = Camera.main;
             camera.targetTexture = rt;
             Texture2D screenShot = new Texture2D(resWidth, resHeight, TextureFormat.RGB24, false);
             camera.Render();

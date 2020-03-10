@@ -3,7 +3,7 @@
 // http://www.thomashourdel.com
 
 #include "UnityCG.cginc"
-#include "./Colorful.cginc"
+#include "./OVShelperFuncs.cginc"
 
 sampler2D _MainTex;
 float4 _Params; // x: speed, y: intensity, z: maxDisplace, w: yuv offset
