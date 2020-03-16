@@ -1,10 +1,10 @@
 # OpenVisSim: a Unity3D, data-driven sight-loss simulator, for for Virtual and Augmented Reality (VR/AR)
 
 ### About
-OpenVisSim is a free library for simulating many of the common symptoms associated with eye diseases (e.g., glaucoma, AMD, diabetic retinopahty, etc.). It is written primarily in OpenGL shaders, so supports most commercial VR/AR hardware.  Eye-tracking is also supported and is HIGHLY recommended. For this reason, I have not released an 'app' version of the software on iTunes or Google Play. OpenVisSIm is not suitable for simulating refractive error (long- or short-sightedness). For that, just try wearing the wrong glasses =)
+OpenVisSim is a free library for simulating many of the symptoms associated with common eye diseases (e.g., glaucoma, AMD, diabetic retinopahty, etc.). The software is written primarily in OpenGL shaders, and supports most commercial VR/AR hardware (e.g., the HTC Vive, Google Cardboard, etc.).  Eye-tracking is also supported and is HIGHLY recommended. Until eye-tracking hardware is more widely available I will not be releasing an 'app' version of this software on iTunes or Google Play. OpenVisSIm is not suitable for simulating refractive error (i.e., long- or short-sightedness). For that, just try wearing the wrong glasses =)
 
 ### Quick Start: Setting up
-Download the project. Open the demo scene "Demo1_Fove\MainScene.unity" in the Unity Editor, and run (NB: doesn't require any hardware to be connected, though will mirror to a Fove0 headset if connected). By default the mouse will be used to simulate the observer's gaze. Filters can be modified by toggling the post-processing effects attached to each eye.
+Download the project. Open the demo scene "Demo1_Fove\MainScene.unity" in the Unity Editor, and click run (NB: doesn't require any hardware to be connected, but will mirror to a Fove0 headset if one is connected). When running in the editor, the mouse is used by default to simulate the observer's gaze. Filters can be modified and turned on and off by toggling the post-processing effects attached to each eye.
 
 **Further details:**
 When effects are linked, the right eye automatically copies the parameters from the left eye. A second demo is also included, designed to use the HTC Vive Eye with ZEDm cameras for AR.
