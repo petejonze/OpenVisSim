@@ -1,7 +1,10 @@
 # OpenVisSim: a Unity3D, data-driven sight-loss simulator, for for Virtual and Augmented Reality (VR/AR)
 
 ### Quick Start: Setting up
-Download the project. Open the demo scene "Demo1_Fove\MainScene.unity" in the Unity Editor, and run (NB: doesn't require any hardware to be connected to run). By default the mouse will be used to simulate the observer's gaze. Filters can be modified by toggling the post-processing effects attached to each eye. When effects are linked, the right eye automatically copies the parameters from the left eye.
+Download the project. Open the demo scene "Demo1_Fove\MainScene.unity" in the Unity Editor, and run (NB: doesn't require any hardware to be connected, though will mirror to a Fove0 headset if connected). By default the mouse will be used to simulate the observer's gaze. Filters can be modified by toggling the post-processing effects attached to each eye.
+
+**Further details**
+When effects are linked, the right eye automatically copies the parameters from the left eye. A second demo is also included, designed to use the HTC Vive Eye with ZEDm cameras for AR.
 
 ### System Requirements
 **Operating system:**
@@ -13,11 +16,11 @@ Unity 2017.4.1f1
 **Dependencies:**
 None (?)
 
-### License
+**License**
 GNU GPL v3.0
 
 ### To cite and for more info
-[Jones, P. R. and Ometto, G. (2018). Degraded Reality: Using VR/AR to simulate visual impairments, Proceedings of 2018 IEEE Workshop on Augmented and Virtual Realities for Good (VAR4Good), Reutlingen, Germany., pp. 1-4. doi:[10.1109/VAR4GOOD.2018.8576885]](https://www.ucl.ac.uk/~smgxprj/pdfs/PJ_vr_ieee_v6_nonblind.pdf)
+[Jones, P. R. and Ometto, G. (2018). Degraded Reality: Using VR/AR to simulate visual impairments, Proceedings of 2018 IEEE Workshop on Augmented and Virtual Realities for Good (VAR4Good), Reutlingen, Germany., pp. 1-4. doi:[10.1109/VAR4GOOD.2018.8576885]](https://www.ucl.ac.uk/~smgxprj/pdfs/jones_IEEE_2018)
 
 [Jones, P. R., Somoskeöy, T., Chow-Wing-Bom, H., & Crabb, D. P. (2020). Seeing other perspectives: Evaluating the use of virtual and augmented reality to simulate visual impairments (OpenVisSim), NPJ Digital Medicine, 3, 32. doi:[10.1038/s41746-020-0242-6]](https://www.nature.com/articles/s41746-020-0242-6)
 
