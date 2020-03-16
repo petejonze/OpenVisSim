@@ -3,8 +3,8 @@
 ### Quick Start: Setting up
 Download the project. Open the demo scene "Demo1_Fove\MainScene.unity" in the Unity Editor, and run (NB: doesn't require any hardware to be connected, though will mirror to a Fove0 headset if connected). By default the mouse will be used to simulate the observer's gaze. Filters can be modified by toggling the post-processing effects attached to each eye.
 
-**Further details**
-When effects are linked, the right eye automatically copies the parameters from the left eye. A second demo is also included, designed to use the HTC Vive Eye with ZEDm cameras for AR.
+**Further details:**
+When effects are linked, the right eye automatically copies the parameters from the left eye. A second demo is also included, designed to use the HTC Vive Eye with ZEDm cameras for AR. The simulator is designed to simulate many of the common symptoms associated with eye diseases that effect that retina and brain (e.g., glaucoma, AMD, diabetic retinopahty, etc.).
 
 ### System Requirements
 **Operating system:**
@@ -16,7 +16,7 @@ Unity 2017.4.1f1
 **Dependencies:**
 None (?)
 
-**License**
+**License:**
 GNU GPL v3.0
 
 ### To cite and for more info
@@ -24,7 +24,7 @@ GNU GPL v3.0
 
 [Jones, P. R., Somoskeöy, T., Chow-Wing-Bom, H., & Crabb, D. P. (2020). Seeing other perspectives: Evaluating the use of virtual and augmented reality to simulate visual impairments (OpenVisSim), NPJ Digital Medicine, 3, 32. doi:[10.1038/s41746-020-0242-6]](https://www.nature.com/articles/s41746-020-0242-6)
 
-### Interactive WebGL Demo (prototype version)
+### Interactive WebGL Demo (early prototype version of OpenVisSim)
 [https://www.ucl.ac.uk/~smgxprj/vr/](https://www.ucl.ac.uk/~smgxprj/vr/)
 
 ### Video of OpenVisSim in action
@@ -34,7 +34,7 @@ GNU GPL v3.0
 [Chow-Wing-Bom, H., Dekker, T. M., Jones, P. R. (2020). The worse eye revisited: Evaluating the impact of asymmetric peripheral vision loss on everyday function, Vision Research, 169, 49-57. doi:[10.1016/j.visres.2019.10.012]](https://www.sciencedirect.com/science/article/abs/pii/S0042698920300304)
 
 ### Acknowledgments
-Development of the simulator was supported by Moorfields Eye Charity (#R170003A) and by the NIHR Biomedical Research Centre located at (both) Moorfields Eye Hospital and UCL Institute of Ophthalmology
+Development of the simulator was supported by Moorfields Eye Charity (#R170003A) and by the NIHR Biomedical Research Centre located at (both) Moorfields Eye Hospital and UCL Institute of Ophthalmology.
 
 ### Contact me
 For any questions/comments, feel free to email me at: peter.jones@city.ac.uk
