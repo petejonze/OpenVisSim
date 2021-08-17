@@ -1,5 +1,8 @@
 # OpenVisSim: a Unity3D, data-driven sight-loss simulator, for for Virtual and Augmented Reality (VR/AR)
 
+### UPDATE: 17/08/2021
+OpenVisSim is now depreciated. However, we've been hard at work developing its successor: [V]irtual and [A]ugmented [R]eality for [I]nclusive [Design] (VARID). VARID is more advanced, better documented, and generally just better. And it will still remain completely free. To be launched late 2021. Cheers - pete.
+
 ### About
 OpenVisSim is a free library for simulating many of the symptoms associated with common eye diseases (e.g., glaucoma, AMD, diabetic retinopahty, etc.). The software is written primarily in OpenGL shaders, and supports most commercial VR/AR hardware (e.g., the HTC Vive, Google Cardboard, etc.).  Eye-tracking is also supported and is HIGHLY recommended. Until eye-tracking hardware is more widely available I will not be releasing an 'app' version of this software on iTunes or Google Play. OpenVisSIm is not suitable for simulating refractive error (i.e., long- or short-sightedness). For that, just try wearing the wrong glasses =)
 
