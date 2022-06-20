@@ -77,6 +77,7 @@ public class GazeTracker : MonoBehaviour
             */
         case GazeSource.Tobii:
 
+                #if !UNITY_WEBGL
                 // Get convergence data
 
                 Tobii.Research.Unity.VREyeTracker _eyeTracker = Tobii.Research.Unity.VREyeTracker.Instance;
@@ -156,8 +157,11 @@ public class GazeTracker : MonoBehaviour
 
                 //Debug.Log(gazePoint +" --> " + xy_norm);
 
-                // finished Fove
+                // finished Tobii
+
+                #endif
                 break;
+
             case GazeSource.Mouse:
          	// Get raw, clip within canvas
 			float mousex = Mathf.Min (Mathf.Max (Input.mousePosition.x, 0), Screen.width);
@@ -166,6 +170,11 @@ public class GazeTracker : MonoBehaviour
             // Convert to norm & set
 			xy_norm.x = mousex / Screen.width;
 			xy_norm.y = mousey / Screen.height;
+
+
+            #if UNITY_WEBGL && !UNITY_EDITOR
+                xy_norm.y = 1 - xy_norm.y;
+            #endif
 
         	// finished Mouse
 			break;

@@ -61,14 +61,18 @@ namespace VisSim
 
             // compute number of levels of blur -- this will be set when(ever) the Material is created (onEnable)
             numLevelsOfBlur = 1 + 1 + Mathf.Floor(Mathf.Log(Mathf.Max(width_px, height_px)));
-            
+
             // generate a default overlay
-			//Texture2D defaultOverlay = (Texture2D)Resources.Load("blob2d_1024", typeof(Texture2D));
-			overlayTexture = (Texture2D)Resources.Load("macular-degeneration", typeof(Texture2D));
-            
-			//double[,] xy = new double[,] { { -21, 9, 20.3125 }, { -21, 3, 21.1094 }, { -21, -3, -17.3438 }, { -21, -9, -16.9401 }, { -15, 15, -19.3281 }, { -15, 9, 20.0625 }, { -15, 3, 18.8281 }, { -15, -9, 16.8099 }, { -15, -15, 16.0678 }, { -9, 15, 19.8438 }, { -9, 9, 19.2031 }, { -9, 3, 21.5938 }, { -9, -3, 17.8516 }, { -9, -9, 16.4063 }, { -9, -15, 15.8073 }, { -3, 15, 19.6250 }, { -3, 9, 20.6094 }, { -3, 3, 21.7031 }, { -3, -3, 18.1771 }, { -3, -9, 17.0573 }, { -3, -15, 16.0287 }, { 3, 15, 20.3125 }, { 3, 9, 21.4844 }, { 3, 3, 21.8594 }, { 3, -3, 21.5625 }, { 3, -9, 20.6250 }, { 3, -15, 19.1875 }, { 9, 15, 20.4844 }, { 9, 9, 20.8281 }, { 9, 3, 21.3906 }, { 9, -3, 21.3125 }, { 9, -9, 20.6875 }, { 9, -15, 18.9063 }, { 15, 15, 20.1094 }, { 15, 9, 20.6875 }, { 15, 3, 20.9063 }, { 15, -3, 20.3906 }, { 15, -9, 20.4375 }, { 15, -15, 18.6094 }, { 21, 9, 20.2656 }, { 21, 3, 20.8750 }, { 21, -3, 20.7656 }, { 21, -9, 19.6094 }, { 27, 3, 20.0469 }, { 27, -3, 19.8750 } };
+            //Texture2D defaultOverlay = (Texture2D)Resources.Load("blob2d_1024", typeof(Texture2D));
+            //overlayTexture = (Texture2D)Resources.Load("macular-degeneration", typeof(Texture2D));
+
+            //double[,] xy = new double[,] { { -21, 9, 20.3125 }, { -21, 3, 21.1094 }, { -21, -3, -17.3438 }, { -21, -9, -16.9401 }, { -15, 15, -19.3281 }, { -15, 9, 20.0625 }, { -15, 3, 18.8281 }, { -15, -9, 16.8099 }, { -15, -15, 16.0678 }, { -9, 15, 19.8438 }, { -9, 9, 19.2031 }, { -9, 3, 21.5938 }, { -9, -3, 17.8516 }, { -9, -9, 16.4063 }, { -9, -15, 15.8073 }, { -3, 15, 19.6250 }, { -3, 9, 20.6094 }, { -3, 3, 21.7031 }, { -3, -3, 18.1771 }, { -3, -9, 17.0573 }, { -3, -15, 16.0287 }, { 3, 15, 20.3125 }, { 3, 9, 21.4844 }, { 3, 3, 21.8594 }, { 3, -3, 21.5625 }, { 3, -9, 20.6250 }, { 3, -15, 19.1875 }, { 9, 15, 20.4844 }, { 9, 9, 20.8281 }, { 9, 3, 21.3906 }, { 9, -3, 21.3125 }, { 9, -9, 20.6875 }, { 9, -15, 18.9063 }, { 15, 15, 20.1094 }, { 15, 9, 20.6875 }, { 15, 3, 20.9063 }, { 15, -3, 20.3906 }, { 15, -9, 20.4375 }, { 15, -15, 18.6094 }, { 21, 9, 20.2656 }, { 21, 3, 20.8750 }, { 21, -3, 20.7656 }, { 21, -9, 19.6094 }, { 27, 3, 20.0469 }, { 27, -3, 19.8750 } };
             //double[,] xy = new double[,] { { -21, 9, 2.2192 }, { -21, 3, 2.2161 }, { -21, -3, -9.0871 }, { -21, -9, -8.7293 }, { -15, 15, 1.7348 }, { -15, 9, 0.3692 }, { -15, 3, -1.7652 }, { -15, -3, -2.6652 }, { -15, -9, -9.9074 }, { -15, -15, -9.4527 }, { -9, 15, 1.5505 }, { -9, 9, -1.8902 }, { -9, 3, 0.3005 }, { -9, -3, -11.0824 }, { -9, -9, -12.0496 }, { -9, -15, -10.2089 }, { -3, 15, 0.9317 }, { -3, 9, -0.1839 }, { -3, 3, -0.4902 }, { -3, -3, -11.3871 }, { -3, -9, -11.1589 }, { -3, -15, -10.9761 }, { 3, 15, 2.0192 }, { 3, 9, 1.2911 }, { 3, 3, -0.1339 }, { 3, -3, -0.7308 }, { 3, -9, -0.6683 }, { 3, -15, -0.6058 }, { 9, 15, 1.0911 }, { 9, 9, 1.1348 }, { 9, 3, 0.6973 }, { 9, -3, 0.1192 }, { 9, -9, -0.6058 }, { 9, -15, -0.4870 }, { 15, 15, 1.2161 }, { 15, 9, 1.5942 }, { 15, -9, 0.8442 }, { 15, -15, -2.2839 }, { 21, 9, 1.3723 }, { 21, 3, 1.0817 }, { 21, -3, 0.7723 }, { 21, -9, -0.4839 }, { 27, 3, -0.3464 }, { 27, -3, 0.0817 } };
             //this.setGrid(xy);
+
+            // set a default grid (central loss)
+            double[,] xy = new double[,] { { -21, 9, 0 }, { -21, 3, 0 }, { -21, -3, 0 }, { -21, -9, 0 }, { -15, 15, 0 }, { -15, 9, 0 }, { -15, 3, 0 }, { -15, -3, 0 }, { -15, -9, 0 }, { -15, -15, 0 }, { -9, 15, 0 }, { -9, 9, 0 }, { -9, 3, -10 }, { -9, -3, -10 }, { -9, -9, 0 }, { -9, -15, 0 }, { -3, 15, 0 }, { -3, 9, -10 }, { -3, 3, -20 }, { -3, -3, -20 }, { -3, -9, -10 }, { -3, -15, 0 }, { 3, 15, 0 }, { 3, 9, -10 }, { 3, 3, -20 }, { 3, -3, -20 }, { 3, -9, -10 }, { 3, -15, 0 }, { 9, 15, 0 }, { 9, 9, 0 }, { 9, 3, -10 }, { 9, -3, -10 }, { 9, -9, 0 }, { 9, -15, 0 }, { 15, 15, 0 }, { 15, 9, 0 }, { 15, -9, 0 }, { 15, -15, 0 }, { 21, 9, 0 }, { 21, 3, 0 }, { 21, -3, 0 }, { 21, -9, 0 }, { 27, 3, 0 }, { 27, -3, 0 } };
+            this.setGrid(xy);
         }
 
         public new void OnEnable()
@@ -110,16 +114,20 @@ namespace VisSim
         }
 
         
-        public void setGrid(double[,] grid_xy)
-        {
-			this.setGrid (grid_xy, false);
-        }
-		public void setGrid(double[,] grid_xy, bool extrapolateEdges)
+		public void setGrid(double[,] grid_xy, bool extrapolateEdges = false, bool autoInterpolateAndSetTexture = true)
 		{
 			overlayRawGrid_xy = grid_xy;
-			overlayTexture = GridInterpolator.Instance.interpolateGridAndMakeTexture(grid_xy, extrapolateEdges);
-			Material.SetTexture("_Overlay", overlayTexture);
+            if (autoInterpolateAndSetTexture)
+            {
+                interpolateGridAndMakeTexture(extrapolateEdges);
+            }
 		}
+        public void interpolateGridAndMakeTexture(bool extrapolateEdges)
+        {
+            overlayTexture = GridInterpolator.Instance.interpolateGridAndMakeTexture(overlayRawGrid_xy, extrapolateEdges);
+            Material.SetTexture("_Overlay", overlayTexture);
+        }
+
         public double[,] getGrid()
         {
             Debug.Log(">>> " + this.overlayRawGrid_xy.Length + ": " + this.overlayRawGrid_xy[0,0]);

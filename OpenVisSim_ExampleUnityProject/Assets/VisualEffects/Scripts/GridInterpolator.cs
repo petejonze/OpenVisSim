@@ -21,16 +21,23 @@ public class GridInterpolator : ScriptableObject
     private static int width_px = 128; // The width_px of the image matrix in n-pixels
     private static int height_px = 128; // The height_px of the image matrix in n-pixels
 
-	// NB: twice the viewable range, since the field loss overlay needs to be 2X bigger than the viewable area
+    // NB: twice the viewable range, since the field loss overlay needs to be 2X bigger than the viewable area
     // NB: rough estimates!
     // https://www.reddit.com/r/oculus/comments/4at20n/field_of_view_for_vr_headsets_explained/
+#if UNITY_WEBGL
+    private double fov_x_min = -21; // -21; // field of view left of the midline (on the retina), in degrees
+	private double fov_x_max = 21; //21;
+	private double fov_y_min = -15; //-15;
+	private double fov_y_max = 15; //15;
+#else
     private double fov_x_min = -55; // -21; // field of view left of the midline (on the retina), in degrees
 	private double fov_x_max = 55; //21;
 	private double fov_y_min = -55; //-15;
 	private double fov_y_max = 55; //15;
+#endif
 
-	// MIN/MAX
-	public static double ffMin = -30;
+    // MIN/MAX
+    public static double ffMin = -30;
 	public static double ffMax = 0;
 
     alglib.rbfmodel model;

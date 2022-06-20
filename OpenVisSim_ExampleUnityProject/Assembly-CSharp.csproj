@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <LangVersion>4</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <RootNamespace></RootNamespace>
+    <ProjectGuid>{DF1D6906-A469-CD5F-5F9D-AE109D398DA3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <BaseDirectory>Assets</BaseDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2017_4_1;UNITY_2017_4;UNITY_2017;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_GENERICS;ENABLE_PVR_GI;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_GRID;ENABLE_TILEMAP;ENABLE_TERRAIN;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_NATIVE_ARRAY;ENABLE_SPRITE_MASKING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_VIDEO;ENABLE_RMGUI;ENABLE_PACKMAN;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_STYLE_SHEETS;ENABLE_LOCALIZATION;PLATFORM_WEBGL;UNITY_WEBGL;UNITY_WEBGL_API;UNITY_DISABLE_WEB_VERIFICATION;UNITY_GFX_USE_PLATFORM_VSYNC;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_VR;ENABLE_SPATIALTRACKING;ENABLE_IL2CPP;NET_2_0_SUBSET;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_NATIVE_ARRAY_CHECKS;UNITY_TEAM_LICENSE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>0169</NoWarn>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Temp\bin\Release\</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>0169</NoWarn>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="UnityEngine">
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor">
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+     <Compile Include="Assets\Demo3_WebGL\Scripts\ComboBox.cs" />
+     <Compile Include="Assets\Demo3_WebGL\Scripts\Frost.cs" />
+     <Compile Include="Assets\Demo3_WebGL\Scripts\UnityTweakGUI.cs" />
+     <Compile Include="Assets\Demo3_WebGL\Scripts\WebglTakeScreenshot.cs" />
+     <Compile Include="Assets\Demo3_WebGL\WebGLSupport\WebGLInput\Detail\RebuildChecker.cs" />
+     <Compile Include="Assets\Demo3_WebGL\WebGLSupport\WebGLInput\Mobile\WebGLInputMobile.cs" />
+     <Compile Include="Assets\Demo3_WebGL\WebGLSupport\WebGLInput\WebGLInput.cs" />
+     <Compile Include="Assets\Demo3_WebGL\WebGLSupport\WebGLInput\Wrapper\IInputField.cs" />
+     <Compile Include="Assets\Demo3_WebGL\WebGLSupport\WebGLInput\Wrapper\WrappedInputField.cs" />
+     <Compile Include="Assets\Demo3_WebGL\WebGLSupport\WebGLInput\Wrapper\WrappedTMPInputField.cs" />
+     <Compile Include="Assets\Demo3_WebGL\WebGLSupport\WebGLWindow\WebGLWindow.cs" />
+     <Compile Include="Assets\Scripts\CameraPlaneController.cs" />
+     <Compile Include="Assets\Scripts\ConvexHull\graham_scan.cs" />
+     <Compile Include="Assets\Scripts\ConvexHull\jarvis_march.cs" />
+     <Compile Include="Assets\Scripts\ConvexHull\point.cs" />
+     <Compile Include="Assets\Scripts\DeviceCameraController.cs" />
+     <Compile Include="Assets\Scripts\fpscounter.cs" />
+     <Compile Include="Assets\Scripts\GazeTracker.cs" />
+     <Compile Include="Assets\Scripts\HiResScreenShots.cs" />
+     <Compile Include="Assets\Scripts\MedicalDataStore.cs" />
+     <Compile Include="Assets\Scripts\PlayMovieOnSpace.cs" />
+     <Compile Include="Assets\Scripts\PositionTarget.cs" />
+     <Compile Include="Assets\Scripts\ReverseNormals.cs" />
+     <Compile Include="Assets\Scripts\Touchable.cs" />
+     <Compile Include="Assets\Scripts\VisSimController.cs" />
+     <Compile Include="Assets\Scripts\ViveCursor.cs" />
+     <Compile Include="Assets\Scripts\VSUtils.cs" />
+     <Compile Include="Assets\VisualEffects\AcidTrip\Scripts\AcidTrip.cs" />
+     <Compile Include="Assets\VisualEffects\FastNoise Unity\Demo Scenes\Misc\FreeCam.cs" />
+     <Compile Include="Assets\VisualEffects\FastNoise Unity\FastNoise SIMD\FastNoiseSIMD.cs" />
+     <Compile Include="Assets\VisualEffects\FastNoise Unity\FastNoise SIMD\FastNoiseSIMDUnity.cs" />
+     <Compile Include="Assets\VisualEffects\FastNoise Unity\FastNoise\FastNoise.cs" />
+     <Compile Include="Assets\VisualEffects\FastNoise Unity\FastNoise\FastNoiseMeshWarp.cs" />
+     <Compile Include="Assets\VisualEffects\FastNoise Unity\FastNoise\FastNoiseUnity.cs" />
+     <Compile Include="Assets\VisualEffects\FastNoise Unity\Voxel Engine\Chunk.cs" />
+     <Compile Include="Assets\VisualEffects\FastNoise Unity\Voxel Engine\ChunkGameObject.cs" />
+     <Compile Include="Assets\VisualEffects\FastNoise Unity\Voxel Engine\ChunkQueue.cs" />
+     <Compile Include="Assets\VisualEffects\FastNoise Unity\Voxel Engine\MeshBuilder.cs" />
+     <Compile Include="Assets\VisualEffects\FastNoise Unity\Voxel Engine\TerrainGenerator.cs" />
+     <Compile Include="Assets\VisualEffects\FastNoise Unity\Voxel Engine\TerrainGeneratorBase.cs" />
+     <Compile Include="Assets\VisualEffects\FastNoise Unity\Voxel Engine\TerrainGenerators\TerrainGenerator_AlienPlanet.cs" />
+     <Compile Include="Assets\VisualEffects\FastNoise Unity\Voxel Engine\TerrainGenerators\TerrainGenerator_CrackedSurface.cs" />
+     <Compile Include="Assets\VisualEffects\FastNoise Unity\Voxel Engine\TerrainGenerators\TerrainGenerator_GrassLand.cs" />
+     <Compile Include="Assets\VisualEffects\FastNoise Unity\Voxel Engine\TerrainGenerators\TerrainGeneratorSIMD_Desert.cs" />
+     <Compile Include="Assets\VisualEffects\FastNoise Unity\Voxel Engine\TerrainGenerators\TerrainGeneratorSIMD_FloatingIslands.cs" />
+     <Compile Include="Assets\VisualEffects\FastNoise Unity\Voxel Engine\TerrainGeneratorSIMD.cs" />
+     <Compile Include="Assets\VisualEffects\FastNoise Unity\Voxel Engine\Util\Half.cs" />
+     <Compile Include="Assets\VisualEffects\FastNoise Unity\Voxel Engine\Util\HalfHelper.cs" />
+     <Compile Include="Assets\VisualEffects\FastNoise Unity\Voxel Engine\Util\ObjectPool.cs" />
+     <Compile Include="Assets\VisualEffects\FastNoise Unity\Voxel Engine\Util\Vector3i.cs" />
+     <Compile Include="Assets\VisualEffects\FastNoise Unity\Voxel Engine\Voxel.cs" />
+     <Compile Include="Assets\VisualEffects\FastNoise Unity\Voxel Engine\VoxelEngineManager.cs" />
+     <Compile Include="Assets\VisualEffects\Scripts\BaseEffect.cs" />
+     <Compile Include="Assets\VisualEffects\Scripts\ConvexHull.cs" />
+     <Compile Include="Assets\VisualEffects\Scripts\GridInterpolator.cs" />
+     <Compile Include="Assets\VisualEffects\Scripts\LinkableBaseEffect.cs" />
+     <Compile Include="Assets\VisualEffects\Scripts\myBloom.cs" />
+     <Compile Include="Assets\VisualEffects\Scripts\myBlur.cs" />
+     <Compile Include="Assets\VisualEffects\Scripts\myBrightnessContrastGamma.cs" />
+     <Compile Include="Assets\VisualEffects\Scripts\myCataract.cs" />
+     <Compile Include="Assets\VisualEffects\Scripts\myDistortionMap.cs" />
+     <Compile Include="Assets\VisualEffects\Scripts\myDoubleVision.cs" />
+     <Compile Include="Assets\VisualEffects\Scripts\myFieldLoss.cs" />
+     <Compile Include="Assets\VisualEffects\Scripts\myFloaters.cs" />
+     <Compile Include="Assets\VisualEffects\Scripts\myGlitch.cs" />
+     <Compile Include="Assets\VisualEffects\Scripts\myInpainter.cs" />
+     <Compile Include="Assets\VisualEffects\Scripts\myInpainter2.cs" />
+     <Compile Include="Assets\VisualEffects\Scripts\myInpainter2_hacked.cs" />
+     <Compile Include="Assets\VisualEffects\Scripts\myLed.cs" />
+     <Compile Include="Assets\VisualEffects\Scripts\myNoise.cs" />
+     <Compile Include="Assets\VisualEffects\Scripts\myNystagmus.cs" />
+     <Compile Include="Assets\VisualEffects\Scripts\myRecolour.cs" />
+     <Compile Include="Assets\VisualEffects\Scripts\myTeichopsia.cs" />
+     <Compile Include="Assets\VisualEffects\Scripts\myWiggle.cs" />
+     <Compile Include="Assets\VisualEffects\Scripts\TextureScale.cs" />
+     <None Include="Assets\VisualEffects\Shaders\myNystagmus.shader" />
+     <None Include="Assets\VisualEffects\Shaders\myWiggle.shader" />
+     <None Include="Assets\Resources\ExperimentalInpainterA.compute" />
+     <None Include="Assets\VisualEffects\Shaders\myNoise.shader" />
+     <None Include="Assets\VisualEffects\AcidTrip\Shaders\AcidTrip.shader" />
+     <None Include="Assets\VisualEffects\Shaders\BasicShader.shader" />
+     <None Include="Assets\VisualEffects\Shaders\myGlitch.shader" />
+     <None Include="Assets\VisualEffects\Shaders\Glitch.cginc" />
+     <None Include="Assets\VisualEffects\FastNoise Unity\Voxel Engine\Visual\Vertex Colored Diffuse.shader" />
+     <None Include="Assets\VisualEffects\Shaders\myInpainter.shader" />
+     <None Include="Assets\VisualEffects\Shaders\myInpainter2.shader" />
+     <None Include="Assets\VisualEffects\Shaders\OVShelperFuncs.cginc" />
+     <None Include="Assets\VisualEffects\FastNoise Unity\Voxel Engine\Visual\Vertex Colored.shader" />
+     <None Include="Assets\VisualEffects\Shaders\myLed.shader" />
+     <None Include="Assets\VisualEffects\Shaders\myDistortionMap.shader" />
+     <None Include="Assets\Scripts\MyFirstCompute.compute" />
+     <None Include="Assets\Resources\ExperimentalInpainterB.compute" />
+     <None Include="Assets\VisualEffects\Shaders\myScintillate.shader" />
+     <None Include="Assets\VisualEffects\Shaders\myBlur.shader" />
+     <None Include="Assets\VisualEffects\Shaders\myFloaters.shader" />
+     <None Include="Assets\VisualEffects\Shaders\myFieldLoss.shader" />
+     <None Include="Assets\Demo3_WebGL\Scripts\Colorful.cginc" />
+     <None Include="Assets\VisualEffects\Shaders\myRecolour.shader" />
+     <None Include="Assets\VisualEffects\FastNoise Unity\Voxel Engine\Visual\Vertex Colored Bumped Diffuse.shader" />
+     <None Include="Assets\VisualEffects\Shaders\cfxFrost.shader" />
+     <None Include="Assets\VisualEffects\Shaders\myBloom.shader" />
+     <None Include="Assets\VisualEffects\Shaders\myBrightnessContrastGamma.shader" />
+     <None Include="Assets\Scripts\MySecondCompute.compute" />
+     <None Include="Assets\Demo3_WebGL\Scripts\Frost.shader" />
+ <Reference Include="UnityEngine.UI">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Networking">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.TestRunner">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
+ </Reference>
+ <Reference Include="nunit.framework">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Timeline">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.UIAutomation">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UIAutomation/UnityEngine.UIAutomation.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.GoogleAudioSpatializer">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/RuntimeEditor/UnityEngine.GoogleAudioSpatializer.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.HoloLens">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.SpatialTracking">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
+ </Reference>
+ <Reference Include="alglibnet2">
+ <HintPath>C:/Users/petej/Dropbox/docs/__GITHUB/OpenVisSim/OpenVisSim_ExampleUnityProject/Assets/VisualEffects/Scripts/alglibnet2.dll</HintPath>
+ </Reference>
+ <Reference Include="alglibnet3">
+ <HintPath>C:/Users/petej/Dropbox/docs/__GITHUB/OpenVisSim/OpenVisSim_ExampleUnityProject/Assets/VisualEffects/Scripts/alglibnet3.dll</HintPath>
+ </Reference>
+ <Reference Include="Exocortex.DSP">
+ <HintPath>C:/Users/petej/Dropbox/docs/__GITHUB/OpenVisSim/OpenVisSim_ExampleUnityProject/Assets/VisualEffects/Scripts/Exocortex.DSP.dll</HintPath>
+ </Reference>
+ <Reference Include="zxing.unity">
+ <HintPath>C:/Users/petej/Dropbox/docs/__GITHUB/OpenVisSim/OpenVisSim_ExampleUnityProject/Assets/VisualEffects/Scripts/zxing.unity.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Advertisements">
+ <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/UnityEngine.Advertisements.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Analytics">
+ <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.13/UnityEngine.Analytics.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Purchasing">
+ <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.purchasing@0.0.19/UnityEngine.Purchasing.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.StandardEvents">
+ <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
+ </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{9BAFCD53-77E2-AD17-1AD5-003B3A3D3F55}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  
+</Project>

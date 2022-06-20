@@ -6,7 +6,7 @@ namespace VisSim
     public class myCataract : LinkableBaseEffect
      {
         // intensity
-        [TweakableMember(0.0f, 1.0f, "Intensity", "Color Deficiency")]
+        [TweakableMember(0.0f, 1.0f, "Intensity", "Cataract")]
         [Linkable, Range(0.0f, 1.0f)]
         public float severityIndex = 0.0f;
 
@@ -30,7 +30,7 @@ namespace VisSim
         {
             base.OnEnable();
 
-            secondaryShader = Shader.Find("Hidden/VisSim/cfxFrost");
+            secondaryShader = Shader.Find("Hidden/Colorful/Frost");
             secondaryMaterial = new Material(secondaryShader);
         }
 

@@ -42,6 +42,13 @@ namespace VisSim
             // ensure material is initialised
             Material.GetType();
 
+            // abort if running in mono mode (e.g., for WebGL)
+            if (this.gameObject.tag == "OnlyEyeMono")
+            {
+                isLeftEye = false;
+                return;
+            }
+
             // check if this is the left eye effect
             isLeftEye = this.gameObject.tag == "LeftEye";
 
@@ -78,6 +85,13 @@ namespace VisSim
 
         protected override void OnDisable()
         {
+            // abort if running in mono mode (e.g., for WebGL)
+            if (this.gameObject.tag == "OnlyEyeMono")
+            {
+                base.OnDisable();
+                return;
+            }
+
             // also disable right eye, if the two eyes are locked
             if (isLeftEye && this.LinkEyes && (rightEyeEffectInstance!=null)) // (i.e., may be null if failed to enable in the first place)
             {
@@ -90,6 +104,13 @@ namespace VisSim
 
         public void Update()
         {
+            // abort if running in mono mode (e.g., for WebGL)
+            if (this.gameObject.tag == "OnlyEyeMono")
+            {
+                OnUpdate();
+                return;
+            }
+
             // enable if not done so already (e.g., if user forgot to include base.onEnable() in subclass!)
             if (leftEyeEffectInstance == null || rightEyeEffectInstance == null) // ||(isLeftEye && leftEyeEffectInstance.enabled == false)
             {

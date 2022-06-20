@@ -15,14 +15,14 @@ namespace VisSim
 		[Linkable, Range(-100f, 100f), Tooltip("Moving the slider to the right increases tonal values and expands highlights, to the left decreases values and expands shadows.")]
 		public float Brightness = 0f;
 
-		[TweakableMember(-100f, 100f, "Contrast", "myBrightnessContrastGamma")]
+		[TweakableMember(-100f, 100f, "Contrast", "Contrast Sensitivity (crude)")]
 		[Linkable, Range(-100f, 100f), Tooltip("Expands or shrinks the overall range of tonal values.")]
 		public float Contrast = 0f;
 
         [Linkable]
 		public Vector3 ContrastCoeff = new Vector3(0.5f, 0.5f, 0.5f);
 
-		[TweakableMember(0.1f, 9.9f, "gamma", "myBrightnessContrastGamma")]
+		[TweakableMember(0.1f, 9.9f, "gamma", "Contrast Sensitivity (crude)")]
 		[Linkable, Range(0.1f, 9.9f), Tooltip("Simple power function.")]
 		public float Gamma = 1f;
 
